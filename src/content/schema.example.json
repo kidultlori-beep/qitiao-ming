@@ -1,0 +1,60 @@
+{
+  "$schemaComment": "七条命关卡包示例 — 与游戏引擎同 schema",
+  "id": "example_chapter",
+  "title": "示例章",
+  "description": "说明如何编写节点",
+  "startNode": "start",
+  "npcs": [{ "id": "npc1", "name": "某人" }],
+  "endings": [
+    {
+      "id": "end_ok",
+      "title": "通关",
+      "summary": "你活下来了。",
+      "kind": "clear"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "start",
+      "title": "开场",
+      "narration": "旁白文字。",
+      "onEnter": { "checkpoint": true },
+      "speakers": [{ "speaker": "某人", "text": "对白。" }],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "选项A",
+          "require": {
+            "flags": ["flag_a"],
+            "ledger": ["item_1"],
+            "bonds": { "npc1": 1 },
+            "minPublicity": 0,
+            "maxPublicity": 100
+          },
+          "showLocked": true,
+          "lockedHint": "未满足条件",
+          "effects": {
+            "setFlags": ["flag_b"],
+            "clearFlags": [],
+            "addLedger": [
+              {
+                "id": "item_1",
+                "kind": "物",
+                "title": "某物",
+                "detail": "说明"
+              }
+            ],
+            "confirmLedger": ["item_1"],
+            "deltaBonds": { "npc1": 1 },
+            "deltaPublicity": 5,
+            "checkpoint": false,
+            "goto": "next",
+            "death": false,
+            "ending": null
+          }
+        }
+      ],
+      "autoGoto": null
+    }
+  ]
+}

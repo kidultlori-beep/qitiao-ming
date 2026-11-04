@@ -1,0 +1,1229 @@
+{
+  "id": "volume1",
+  "title": "卷一 · 账未完",
+  "description": "缺页、递钥、收针、讨债并账、人归——序章之后的骨架。原创旁白与对白，非整章粘贴。",
+  "startNode": "v1_bridge",
+  "npcs": [
+    {
+      "id": "qinghe",
+      "name": "青禾",
+      "intro": "贴身丫头，怕却忠。"
+    },
+    {
+      "id": "peixuan",
+      "name": "裴玄",
+      "intro": "青袍玉佩，话少。"
+    },
+    {
+      "id": "wupo",
+      "name": "吴婆子",
+      "intro": "城南角门管事。"
+    },
+    {
+      "id": "jimo",
+      "name": "继母",
+      "intro": "笑里藏刀。"
+    },
+    {
+      "id": "keyboy",
+      "name": "递钥人",
+      "intro": "夜里敲门的少年。"
+    },
+    {
+      "id": "zhanggui",
+      "name": "账房先生",
+      "intro": "沈府旧账经手人。"
+    }
+  ],
+  "endings": [
+    {
+      "id": "ending_missing_page",
+      "title": "缺页之证",
+      "summary": "你补齐密册缺页，把沈府最大的一笔「意外」钉死在纸上。命还在，账本合了一半——够用。",
+      "kind": "clear"
+    },
+    {
+      "id": "ending_debt_cleared",
+      "title": "并账清场",
+      "summary": "讨债并账那一夜，银与命对冲。你没赢尽，却把对方逼到桌边签字。卷一暂结。",
+      "kind": "clear"
+    },
+    {
+      "id": "ending_return",
+      "title": "人归",
+      "summary": "该回来的人回来了。不是团圆，是对质。七条命还剩几条，你第一次愿意当面数给他听。",
+      "kind": "clear"
+    },
+    {
+      "id": "ending_needle_bad",
+      "title": "针线封口",
+      "summary": "你收得太急，线头被人拽住。公开度过高，卷一以「暂避」收场——账未完，人先走。",
+      "kind": "bad"
+    },
+    {
+      "id": "game_over",
+      "title": "命尽",
+      "summary": "七条命皆尽。账本合上，灯熄。",
+      "kind": "death"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "v1_bridge",
+      "title": "卷一 · 起",
+      "narration": "序章的火还未冷。密册或立案号，已在你掌心。青禾把窗关严，只留一条缝给夜风。\n昭宁摊开纸——有些字被人挖去，像伤口。",
+      "onEnter": {
+        "checkpoint": true,
+        "setFlags": [
+          "entered_volume1"
+        ]
+      },
+      "speakers": [
+        {
+          "speaker": "青禾",
+          "text": "小姐……这本子少了好几页。像被人故意撕的。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "撕得干净，说明怕。怕的人，最容易留下线头。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_v1_start",
+          "text": "先查缺页从何处起",
+          "effects": {
+            "goto": "v1_missing"
+          }
+        },
+        {
+          "id": "c_v1_start_case",
+          "text": "先拿立案号去换线索",
+          "require": {
+            "ledger": [
+              "ledger_case"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "需持有大理寺立案号",
+          "effects": {
+            "setFlags": [
+              "used_case_for_clue"
+            ],
+            "goto": "v1_missing"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_missing",
+      "title": "第5章气质 · 缺页",
+      "narration": "灯下对照：缺页集中在「寅年冬」与「卯年春」两段。墨迹断裂处，隐约有指甲掐痕。",
+      "onEnter": {
+        "checkpoint": true
+      },
+      "speakers": [
+        {
+          "speaker": "昭宁",
+          "text": "不是偶发。是有人专撕与我相关的那几夜。"
+        },
+        {
+          "speaker": "青禾",
+          "text": "那……去找谁要？"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_ask_wupo_page",
+          "text": "回废园问吴婆子",
+          "require": {
+            "flags": [
+              "door_open"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "需曾打开废园角门",
+          "effects": {
+            "deltaBonds": {
+              "wupo": 1
+            },
+            "goto": "v1_wupo_page"
+          }
+        },
+        {
+          "id": "c_ask_pei_page",
+          "text": "把缺页痕迹给裴玄看",
+          "require": {
+            "bonds": {
+              "peixuan": 2
+            }
+          },
+          "showLocked": true,
+          "lockedHint": "需裴玄好感≥2",
+          "effects": {
+            "deltaBonds": {
+              "peixuan": 1
+            },
+            "goto": "v1_pei_page"
+          }
+        },
+        {
+          "id": "c_search_self",
+          "text": "自己连夜翻府中旧箱",
+          "effects": {
+            "deltaPublicity": 5,
+            "goto": "v1_box_search"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_wupo_page",
+      "narration": "吴婆子认物不认人。她盯着缺页边缘，忽然啐一口。",
+      "speakers": [
+        {
+          "speaker": "吴婆子",
+          "text": "撕纸的人，夜里递过一把钥匙。不是给我——是塞进井栏缝。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "钥匙还在？"
+        },
+        {
+          "speaker": "吴婆子",
+          "text": "在不在，看你敢不敢去摸。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_take_well_hint",
+          "text": "记下「井栏缝」与递钥人",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_key_hint",
+                "kind": "事",
+                "title": "井栏递钥",
+                "detail": "吴婆子称：撕缺页之人曾把钥匙塞进废园井栏缝。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_key_hint"
+            ],
+            "setFlags": [
+              "key_hint"
+            ],
+            "goto": "v1_key_night"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_pei_page",
+      "narration": "裴玄只看一眼缺页，便把纸推回。玉佩轻响。",
+      "speakers": [
+        {
+          "speaker": "裴玄",
+          "text": "撕得整齐，像账房手势。沈府旧账房——还活着。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "人在哪？"
+        },
+        {
+          "speaker": "裴玄",
+          "text": "城西药铺后门。别提我名。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_pei_clue",
+          "text": "收下线索，准备夜访",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_zhanggui_clue",
+                "kind": "人",
+                "title": "旧账房下落",
+                "detail": "城西药铺后门。裴玄暗示：撕页手势像账房。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_zhanggui_clue"
+            ],
+            "setFlags": [
+              "zhanggui_clue",
+              "key_hint"
+            ],
+            "deltaBonds": {
+              "peixuan": 1
+            },
+            "goto": "v1_key_night"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_box_search",
+      "narration": "旧箱里尽是霉味与碎绢。你摸到一截铜匙——齿纹生疏，像新配的。箱底还有半页被揉皱的账，字迹被水洇开。",
+      "speakers": [
+        {
+          "speaker": "青禾",
+          "text": "小姐，这钥匙……烫手。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "烫，才说明有人急着藏。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_box_key",
+          "text": "收下铜匙与半页残账",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_copper_key",
+                "kind": "物",
+                "title": "生铜匙",
+                "detail": "旧箱中所得。齿纹新，用途不明。"
+              },
+              {
+                "id": "ledger_half_page",
+                "kind": "物",
+                "title": "半页残账",
+                "detail": "水洇字迹，隐约可见「并账」二字。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_copper_key",
+              "ledger_half_page"
+            ],
+            "setFlags": [
+              "has_copper_key",
+              "key_hint"
+            ],
+            "goto": "v1_key_night"
+          }
+        },
+        {
+          "id": "c_box_noise",
+          "text": "动静太大，被人撞见（险）",
+          "effects": {
+            "deltaPublicity": 15,
+            "goto": "v1_box_caught"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_box_caught",
+      "narration": "继母的影子挡在门框。她笑，笑意不到眼。",
+      "speakers": [
+        {
+          "speaker": "继母",
+          "text": "二姑娘夜不归寝，还翻旧物？是想给谁看？"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "给账本看。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_caught_bluff",
+          "text": "硬扛：缺页问罪",
+          "effects": {
+            "deltaPublicity": 10,
+            "setFlags": [
+              "jimo_alert"
+            ],
+            "goto": "v1_key_night"
+          }
+        },
+        {
+          "id": "c_caught_flee",
+          "text": "借青禾掩护撤走",
+          "effects": {
+            "deltaBonds": {
+              "qinghe": 2
+            },
+            "goto": "v1_key_night"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_key_night",
+      "title": "第8章气质 · 递钥",
+      "narration": "三更。有人叩你窗棂，三短一长。青禾握剪，你只说开门。",
+      "onEnter": {
+        "checkpoint": true
+      },
+      "speakers": [
+        {
+          "speaker": "递钥人",
+          "text": "……沈二姑娘。有人让我把这个给你。不要问名。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "问名没用。问——钥匙开哪扇门。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_accept_key",
+          "text": "接钥，放人走",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_night_key",
+                "kind": "物",
+                "title": "夜叩之钥",
+                "detail": "少年所递。寒铁，柄上刻半个「归」字。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_night_key"
+            ],
+            "setFlags": [
+              "has_night_key"
+            ],
+            "goto": "v1_key_ask"
+          }
+        },
+        {
+          "id": "c_grab_boy",
+          "text": "扣住少年追问",
+          "effects": {
+            "deltaPublicity": 8,
+            "goto": "v1_key_grab"
+          }
+        },
+        {
+          "id": "c_refuse_key",
+          "text": "拒收，只问口信",
+          "effects": {
+            "setFlags": [
+              "refused_key"
+            ],
+            "goto": "v1_key_msg"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_key_ask",
+      "narration": "少年退后半步，喉结滚动。",
+      "speakers": [
+        {
+          "speaker": "递钥人",
+          "text": "城西药铺。后门。说「并账」——才会开。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "谁教你的？"
+        },
+        {
+          "speaker": "递钥人",
+          "text": "……一个不肯回家的人。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_key_to_needle",
+          "text": "记下，转入收针",
+          "effects": {
+            "setFlags": [
+              "know_pharmacy"
+            ],
+            "goto": "v1_needle"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_key_grab",
+      "narration": "你扣腕。少年痛呼，怀中掉出一张纸条——字迹熟悉得像上一世临终前见过。",
+      "speakers": [
+        {
+          "speaker": "递钥人",
+          "text": "别……别害他！他只是想把缺页还你！"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "「他」是谁。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_grab_soft",
+          "text": "松手，换信任",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_return_note",
+                "kind": "事",
+                "title": "归人纸条",
+                "detail": "「缺页在账房。钥开后门。人，会归。」"
+              },
+              {
+                "id": "ledger_night_key",
+                "kind": "物",
+                "title": "夜叩之钥",
+                "detail": "少年所携。柄上刻半个「归」字。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_return_note",
+              "ledger_night_key"
+            ],
+            "setFlags": [
+              "has_night_key",
+              "know_pharmacy",
+              "return_hint"
+            ],
+            "goto": "v1_needle"
+          }
+        },
+        {
+          "id": "c_grab_hard",
+          "text": "逼问到底（险）",
+          "effects": {
+            "death": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_key_msg",
+      "narration": "少年把钥收回，只留下一句。",
+      "speakers": [
+        {
+          "speaker": "递钥人",
+          "text": "缺页在账房。人——会归。你若不要钥，就收针，别乱扯线。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "收针。我懂。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_msg_needle",
+          "text": "转入收针",
+          "effects": {
+            "setFlags": [
+              "know_pharmacy",
+              "return_hint"
+            ],
+            "addLedger": [
+              {
+                "id": "ledger_return_hint",
+                "kind": "事",
+                "title": "口信：人归",
+                "detail": "递钥人口信：缺页在账房；有人将归。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_return_hint"
+            ],
+            "goto": "v1_needle"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_needle",
+      "title": "第12章气质 · 收针",
+      "narration": "所谓收针，不是缝衣——是把散落的线头收回来，不让人顺着扯到你喉咙。\n你把缺页、钥、立案号与半页残账摊开，像布阵。",
+      "onEnter": {
+        "checkpoint": true
+      },
+      "speakers": [
+        {
+          "speaker": "青禾",
+          "text": "小姐，我们……是去药铺，还是先并账？"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "针要收紧，才能扎得准。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_needle_pharmacy",
+          "text": "先赴城西药铺",
+          "require": {
+            "flags": [
+              "know_pharmacy"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "需已知药铺后门线索",
+          "effects": {
+            "goto": "v1_pharmacy"
+          }
+        },
+        {
+          "id": "c_needle_debt",
+          "text": "先讨债并账",
+          "require": {
+            "flags": [
+              "key_hint"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "需已获得缺页/递钥相关线索",
+          "effects": {
+            "goto": "v1_debt"
+          }
+        },
+        {
+          "id": "c_needle_rush",
+          "text": "公开张扬，逼对方露头（险）",
+          "effects": {
+            "deltaPublicity": 25,
+            "goto": "v1_needle_rush"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_needle_rush",
+      "narration": "你故意在茶楼丢下一句「沈府缺页将公示」。半个时辰后，有人塞来恐吓帖。",
+      "speakers": [
+        {
+          "speaker": "昭宁",
+          "text": "恐吓帖也是账。写进本子。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_rush_pull_back",
+          "text": "收声，改走暗线",
+          "require": {
+            "maxPublicity": 60
+          },
+          "showLocked": true,
+          "lockedHint": "公开度过高则难收场",
+          "effects": {
+            "deltaPublicity": -10,
+            "goto": "v1_pharmacy"
+          }
+        },
+        {
+          "id": "c_rush_bad",
+          "text": "硬刚到底，暂避锋芒（坏结局）",
+          "require": {
+            "minPublicity": 40
+          },
+          "effects": {
+            "ending": "ending_needle_bad"
+          }
+        },
+        {
+          "id": "c_rush_to_debt",
+          "text": "用恐吓帖换并账谈判",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_threat",
+                "kind": "事",
+                "title": "恐吓帖",
+                "detail": "茶楼匿名帖。可作施压筹码。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_threat"
+            ],
+            "goto": "v1_debt"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_pharmacy",
+      "title": "药铺后门",
+      "narration": "药香混着陈墨。后门上锁。你试钥——或敲三下，报「并账」。",
+      "onEnter": {
+        "checkpoint": true
+      },
+      "speakers": [
+        {
+          "speaker": "账房先生",
+          "text": "……沈二姑娘。你不该来。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "缺页在你这儿。人呢？"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_pharm_key",
+          "text": "出示夜叩之钥",
+          "require": {
+            "ledger": [
+              "ledger_night_key"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "需持有夜叩之钥",
+          "effects": {
+            "setFlags": [
+              "pharmacy_open"
+            ],
+            "goto": "v1_pages_found"
+          }
+        },
+        {
+          "id": "c_pharm_copper",
+          "text": "出示生铜匙",
+          "require": {
+            "ledger": [
+              "ledger_copper_key"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "需持有生铜匙",
+          "effects": {
+            "setFlags": [
+              "pharmacy_open"
+            ],
+            "goto": "v1_pages_found"
+          }
+        },
+        {
+          "id": "c_pharm_case",
+          "text": "甩出立案号施压",
+          "require": {
+            "ledger": [
+              "ledger_case"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "需已立案",
+          "effects": {
+            "deltaBonds": {
+              "zhanggui": -1
+            },
+            "setFlags": [
+              "pharmacy_open"
+            ],
+            "goto": "v1_pages_found"
+          }
+        },
+        {
+          "id": "c_pharm_force",
+          "text": "破门硬闯（险）",
+          "effects": {
+            "death": true
+          }
+        },
+        {
+          "id": "c_pharm_word",
+          "text": "只报「并账」，不开钥",
+          "effects": {
+            "setFlags": [
+              "said_bingzhang"
+            ],
+            "goto": "v1_pages_talk"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_pages_talk",
+      "narration": "门开一线。账房先生脸色灰败，像被旧账压弯的人。",
+      "speakers": [
+        {
+          "speaker": "账房先生",
+          "text": "缺页我藏着。不是为害你——是为留活口。并账那一夜，死人的名字不该见光。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "见光，才不死第二次。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_talk_get_pages",
+          "text": "要回缺页",
+          "effects": {
+            "goto": "v1_pages_found"
+          }
+        },
+        {
+          "id": "c_talk_debt",
+          "text": "逼他立刻并账",
+          "effects": {
+            "goto": "v1_debt"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_pages_found",
+      "narration": "缺页归位。墨与掐痕对上——寅年冬，你「病重」那几日的银货往来，写得清清楚楚。还有一行被圈住的字：人归则账完。",
+      "speakers": [
+        {
+          "speaker": "账房先生",
+          "text": "你要的证据在这儿。接下来只有两条路：并账，或等人归。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "我两条都要。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_pages_confirm",
+          "text": "封存缺页入账本",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_missing_pages",
+                "kind": "物",
+                "title": "密册缺页",
+                "detail": "寅年冬病重期间银货往来。圈注：人归则账完。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_missing_pages"
+            ],
+            "setFlags": [
+              "got_missing_pages"
+            ],
+            "goto": "v1_fork"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_fork",
+      "title": "分岔",
+      "narration": "窗外天光将白。你可以现在结案，也可以把针再往深处扎。",
+      "onEnter": {
+        "checkpoint": true
+      },
+      "speakers": [
+        {
+          "speaker": "青禾",
+          "text": "小姐……我们赢一截了吧？"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "赢一截，不等于账完。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_fork_end_pages",
+          "text": "以缺页为证，暂收卷一（结局：缺页之证）",
+          "require": {
+            "flags": [
+              "got_missing_pages"
+            ]
+          },
+          "effects": {
+            "ending": "ending_missing_page"
+          }
+        },
+        {
+          "id": "c_fork_debt",
+          "text": "转入讨债并账",
+          "effects": {
+            "goto": "v1_debt"
+          }
+        },
+        {
+          "id": "c_fork_return",
+          "text": "去等人归",
+          "require": {
+            "flags": [
+              "return_hint"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "需已获「人归」相关线索",
+          "effects": {
+            "goto": "v1_return"
+          }
+        },
+        {
+          "id": "c_fork_return_alt",
+          "text": "凭缺页上的圈注去等",
+          "require": {
+            "flags": [
+              "got_missing_pages"
+            ]
+          },
+          "effects": {
+            "setFlags": [
+              "return_hint"
+            ],
+            "goto": "v1_return"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_debt",
+      "title": "第16章气质 · 讨债并账",
+      "narration": "并账桌摆在药铺内室。烛火跳。对面坐着代沈府出面的人——你认出继母的私印在契尾。",
+      "onEnter": {
+        "checkpoint": true
+      },
+      "speakers": [
+        {
+          "speaker": "账房先生",
+          "text": "旧债新债，今日并。谁签字，谁担。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "继母的印，我认。人，呢？"
+        },
+        {
+          "speaker": "？？？",
+          "text": "人在门外。先把数算清。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_debt_pages",
+          "text": "甩出缺页逼签",
+          "require": {
+            "ledger": [
+              "ledger_missing_pages"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "需已取得密册缺页",
+          "effects": {
+            "setFlags": [
+              "debt_pressed"
+            ],
+            "goto": "v1_debt_sign"
+          }
+        },
+        {
+          "id": "c_debt_case",
+          "text": "以立案号威胁公开",
+          "require": {
+            "ledger": [
+              "ledger_case"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "需已立案",
+          "effects": {
+            "deltaPublicity": 10,
+            "setFlags": [
+              "debt_pressed"
+            ],
+            "goto": "v1_debt_sign"
+          }
+        },
+        {
+          "id": "c_debt_threat",
+          "text": "用恐吓帖反制",
+          "require": {
+            "ledger": [
+              "ledger_threat"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "需持有恐吓帖",
+          "effects": {
+            "setFlags": [
+              "debt_pressed"
+            ],
+            "goto": "v1_debt_sign"
+          }
+        },
+        {
+          "id": "c_debt_secret",
+          "text": "用废园密册施压",
+          "require": {
+            "ledger": [
+              "ledger_secret_book"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "需持有废园密册",
+          "effects": {
+            "setFlags": [
+              "debt_pressed"
+            ],
+            "goto": "v1_debt_sign"
+          }
+        },
+        {
+          "id": "c_debt_reckless",
+          "text": "空手硬谈（险）",
+          "effects": {
+            "goto": "v1_debt_empty"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_debt_empty",
+      "narration": "没有物证的谈判，像空手接刀。对方笑着起身。",
+      "speakers": [
+        {
+          "speaker": "？？？",
+          "text": "沈二姑娘，你的命很贵。别在这儿耗。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_empty_back",
+          "text": "先撤，补证据再来",
+          "effects": {
+            "goto": "v1_needle"
+          }
+        },
+        {
+          "id": "c_empty_death",
+          "text": "掀桌硬拼",
+          "effects": {
+            "death": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_debt_sign",
+      "narration": "契纸摊开。对方握笔的手抖了一下，终于落款。银数对冲，命债另记——你没让那一行被墨涂掉。",
+      "speakers": [
+        {
+          "speaker": "昭宁",
+          "text": "并账可以。抹人，不行。"
+        },
+        {
+          "speaker": "账房先生",
+          "text": "……你比他们想的难缠。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_debt_end",
+          "text": "收契离场（结局：并账清场）",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_debt_deed",
+                "kind": "数",
+                "title": "并账契",
+                "detail": "药铺内室所签。银货对冲，命债另记，不可涂抹。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_debt_deed"
+            ],
+            "ending": "ending_debt_cleared"
+          }
+        },
+        {
+          "id": "c_debt_then_return",
+          "text": "契已签，仍去见「归人」",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_debt_deed",
+                "kind": "数",
+                "title": "并账契",
+                "detail": "药铺内室所签。银货对冲，命债另记，不可涂抹。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_debt_deed"
+            ],
+            "setFlags": [
+              "debt_done",
+              "return_hint"
+            ],
+            "goto": "v1_return"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_return",
+      "title": "第20章气质 · 人归",
+      "narration": "雨后的巷口。青袍先到——不是裴玄，是另一个你不该再见到的背影。他转身，像把上一世未说完的话咽回去。",
+      "onEnter": {
+        "checkpoint": true
+      },
+      "speakers": [
+        {
+          "speaker": "归人",
+          "text": "……昭宁。你不该用命来换这些纸。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "纸能换命。你当时不在。"
+        },
+        {
+          "speaker": "归人",
+          "text": "我在。只是回来得太晚。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_return_confront",
+          "text": "对质：缺页、并账、七条命",
+          "effects": {
+            "setFlags": [
+              "confronted_return"
+            ],
+            "goto": "v1_return_talk"
+          }
+        },
+        {
+          "id": "c_return_soft",
+          "text": "先问一句：为何现在归",
+          "effects": {
+            "deltaBonds": {
+              "peixuan": 0
+            },
+            "goto": "v1_return_why"
+          }
+        },
+        {
+          "id": "c_return_trap",
+          "text": "怀疑是局，抽身（险）",
+          "effects": {
+            "goto": "v1_return_trap"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_return_why",
+      "narration": "他沉默很久。雨滴从檐角落下，像在数。",
+      "speakers": [
+        {
+          "speaker": "归人",
+          "text": "因为有人把钥匙塞进井栏。因为缺页圈着「人归则账完」。因为——听说你还剩几条命。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "几条，我自己数。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_why_to_talk",
+          "text": "继续对质",
+          "effects": {
+            "goto": "v1_return_talk"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_return_trap",
+      "narration": "巷尾有脚步。你撤得快——却踩空一阶。",
+      "speakers": [
+        {
+          "speaker": "青禾",
+          "text": "小姐！"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_trap_death",
+          "text": "……（坠落）",
+          "effects": {
+            "death": true
+          }
+        },
+        {
+          "id": "c_trap_recover",
+          "text": "抓住归人伸来的手",
+          "require": {
+            "flags": [
+              "scar_made"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "腕上有疤者抓得更稳（序章选择）",
+          "effects": {
+            "setFlags": [
+              "trust_return"
+            ],
+            "goto": "v1_return_talk"
+          }
+        }
+      ]
+    },
+    {
+      "id": "v1_return_talk",
+      "narration": "你们站在雨里，把该算的都摊开：缺页、钥、契、命。他没有求你原谅，只求你把账本合上之前，留一行给他改。",
+      "speakers": [
+        {
+          "speaker": "归人",
+          "text": "卷一可以完。后面的——我陪你算。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "陪？先把这一卷签完。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_return_end",
+          "text": "允他对质入账（结局：人归）",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_return",
+                "kind": "人",
+                "title": "归人对质",
+                "detail": "雨巷相认。非团圆，是对质。卷一可结。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_return"
+            ],
+            "ending": "ending_return"
+          }
+        },
+        {
+          "id": "c_return_pages_end",
+          "text": "以人归印证缺页，收束（结局：缺页之证）",
+          "require": {
+            "flags": [
+              "got_missing_pages"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "需已取得缺页",
+          "effects": {
+            "confirmLedger": [
+              "ledger_missing_pages"
+            ],
+            "ending": "ending_missing_page"
+          }
+        },
+        {
+          "id": "c_return_debt_end",
+          "text": "拉他去看并账契（结局：并账清场）",
+          "require": {
+            "flags": [
+              "debt_done"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "需已完成并账",
+          "effects": {
+            "ending": "ending_debt_cleared"
+          }
+        }
+      ]
+    }
+  ]
+}

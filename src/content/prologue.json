@@ -1,0 +1,1281 @@
+{
+  "id": "prologue",
+  "title": "序章 · 七条命",
+  "description": "沈昭宁重生归来。嫁衣、验身、裴玄、城南废园——账本起笔，可接卷一。",
+  "startNode": "ch1_wake",
+  "npcs": [
+    {
+      "id": "qinghe",
+      "name": "青禾",
+      "intro": "贴身丫头，怕却忠。"
+    },
+    {
+      "id": "pomu",
+      "name": "婆母",
+      "intro": "软语逼人。"
+    },
+    {
+      "id": "jimo",
+      "name": "继母",
+      "intro": "笑里藏刀。"
+    },
+    {
+      "id": "peixuan",
+      "name": "裴玄",
+      "intro": "青袍玉佩，话少。"
+    },
+    {
+      "id": "wupo",
+      "name": "吴婆子",
+      "intro": "城南角门管事。"
+    }
+  ],
+  "endings": [
+    {
+      "id": "ending_case",
+      "title": "立案之路",
+      "summary": "你借裴玄之手，将沈府旧案送入大理寺。命还在，账未结，但路已开。",
+      "kind": "clear"
+    },
+    {
+      "id": "ending_garden",
+      "title": "废园密钥",
+      "summary": "吴婆子开了角门。废园深处藏着你上一世想找却找不到的东西。七条命，够用。",
+      "kind": "clear"
+    },
+    {
+      "id": "ending_exposed",
+      "title": "当众撕破",
+      "summary": "你当众揭穿验身局，公开度暴涨。府里再难容你，你却换来一张可写进账本的铁证。",
+      "kind": "clear"
+    },
+    {
+      "id": "game_over",
+      "title": "命尽",
+      "summary": "七条命皆尽。账本合上，灯熄。",
+      "kind": "death"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "ch1_wake",
+      "title": "第1章 · 拒嫁衣",
+      "narration": "晨光刺眼。沈昭宁睁眼，指尖触到枕边绣帕——上一世咽气前握过的那块。她坐起，腕上光洁，尚无旧疤。\n门外脚步碎响。",
+      "onEnter": {
+        "checkpoint": true
+      },
+      "speakers": [
+        {
+          "speaker": "青禾",
+          "text": "小姐……今日是、是大婚吉日。夫人说，嫁衣已备好，请您更衣。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_refuse_dress",
+          "text": "「不穿。」",
+          "effects": {
+            "deltaBonds": {
+              "qinghe": 1
+            },
+            "goto": "ch1_refuse"
+          }
+        },
+        {
+          "id": "c_ask_who",
+          "text": "「谁做的主？」",
+          "effects": {
+            "setFlags": [
+              "asked_master"
+            ],
+            "goto": "ch1_refuse"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch1_refuse",
+      "narration": "青禾脸色煞白，捧着一件灼目的红嫁衣，袖口发抖。昭宁接过，指腹在夹层摩挲——触到一粒硬。",
+      "speakers": [
+        {
+          "speaker": "昭宁",
+          "text": "拆开。"
+        },
+        {
+          "speaker": "青禾",
+          "text": "小、小姐？这……会脏了吉服。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "我说拆。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_find_pouch",
+          "text": "撕开夹层",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_musk",
+                "kind": "物",
+                "title": "麝香小包",
+                "detail": "红嫁衣夹层所藏。闻之昏沉，似为当日迷乱之用。"
+              }
+            ],
+            "setFlags": [
+              "found_musk"
+            ],
+            "goto": "ch1_musk"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch1_musk",
+      "narration": "一线麝香逸出。青禾捂鼻后退。昭宁捏着那枚小包，眼神冷定。",
+      "speakers": [
+        {
+          "speaker": "青禾",
+          "text": "这……这是谁缝进去的？"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "问得迟了。烧了。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_burn",
+          "text": "烧嫁衣",
+          "effects": {
+            "confirmLedger": [
+              "ledger_musk"
+            ],
+            "setFlags": [
+              "burned_dress"
+            ],
+            "deltaPublicity": 5,
+            "goto": "ch1_burn"
+          }
+        },
+        {
+          "id": "c_hide_pouch",
+          "text": "先藏起小包，嫁衣暂留",
+          "effects": {
+            "setFlags": [
+              "hid_musk"
+            ],
+            "goto": "ch1_hide"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch1_burn",
+      "narration": "火舌卷红。院子里惊呼四起。继母闻声而来，笑意僵在嘴角。",
+      "speakers": [
+        {
+          "speaker": "继母",
+          "text": "昭宁，你这是何意？吉日毁衣，成何体统？"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "体统？缝在衣里的东西，也算体统？"
+        },
+        {
+          "speaker": "继母",
+          "text": "……你血口喷人。青禾，扶小姐回房歇着，莫再胡闹。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_to_scar",
+          "text": "回房，处理旧账",
+          "effects": {
+            "deltaBonds": {
+              "jimo": -2
+            },
+            "goto": "ch1_scar"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch1_hide",
+      "narration": "小包收入袖中。嫁衣仍挂着，像一口未合的棺。青禾眼眶发红。",
+      "speakers": [
+        {
+          "speaker": "昭宁",
+          "text": "今日任何人都别碰这衣。违者——我剥她的皮。"
+        },
+        {
+          "speaker": "青禾",
+          "text": "……是。青禾守着。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_to_scar_hide",
+          "text": "回房",
+          "effects": {
+            "deltaBonds": {
+              "qinghe": 2
+            },
+            "goto": "ch1_scar"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch1_scar",
+      "narration": "门闩落下。昭宁挽袖，看向左手腕——上一世自刎的位置，此刻光滑如初。\n她拾起枕边小剪。",
+      "speakers": [
+        {
+          "speaker": "昭宁",
+          "text": "要留个记号。免得自己忘了，还能死几次。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_cut",
+          "text": "在旧位划下一道浅疤",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_scar",
+                "kind": "事",
+                "title": "腕上旧位",
+                "detail": "亲手划下的浅疤。提醒：此身已非初活。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_scar"
+            ],
+            "setFlags": [
+              "scar_made"
+            ],
+            "goto": "ch1_end"
+          }
+        },
+        {
+          "id": "c_no_cut",
+          "text": "放下剪刀，忍住",
+          "effects": {
+            "setFlags": [
+              "scar_skipped"
+            ],
+            "goto": "ch1_end"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch1_end",
+      "narration": "窗外有人低语「还剩——」又噤声。昭宁望着自己的掌心，轻声自语。",
+      "speakers": [
+        {
+          "speaker": "昭宁",
+          "text": "七次。够了。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_ch2",
+          "text": "进入第2章 · 反将验身",
+          "effects": {
+            "checkpoint": true,
+            "goto": "ch2_summon"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch2_summon",
+      "title": "第2章 · 反将验身",
+      "narration": "未时。婆母遣人来请：婚前验身，以免「不清不白」。厅里屏风半掩，稳婆已候。",
+      "onEnter": {
+        "checkpoint": true
+      },
+      "speakers": [
+        {
+          "speaker": "婆母",
+          "text": "宁丫头，这也是为你好。男方那边盯得紧，咱们沈府不能落下话柄。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "话柄，是谁落下的？"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_agree_check",
+          "text": "表面应下，暗中布局",
+          "effects": {
+            "setFlags": [
+              "accept_check_surface"
+            ],
+            "deltaBonds": {
+              "pomu": 1
+            },
+            "goto": "ch2_prepare"
+          }
+        },
+        {
+          "id": "c_refuse_check",
+          "text": "当场拒绝",
+          "effects": {
+            "deltaPublicity": 10,
+            "deltaBonds": {
+              "pomu": -2
+            },
+            "goto": "ch2_refuse_hard"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch2_refuse_hard",
+      "narration": "厅中一静。婆母笑容不改，眼底却冷。",
+      "speakers": [
+        {
+          "speaker": "婆母",
+          "text": "你若不验，便是心虚。明日满城都会知道沈家二房不规矩。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "满城？那更好。把人请来听。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_back_prepare",
+          "text": "改口：验可以，人要我挑",
+          "effects": {
+            "setFlags": [
+              "accept_check_surface"
+            ],
+            "goto": "ch2_prepare"
+          }
+        },
+        {
+          "id": "c_force_expose",
+          "text": "当众掀桌，硬刚到底",
+          "require": {
+            "flags": [
+              "found_musk"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "需先发现嫁衣夹层之物",
+          "effects": {
+            "deltaPublicity": 25,
+            "goto": "ch2_public_expose"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch2_prepare",
+      "narration": "昭宁要青禾去后厨取「净手汤」，又遣人请族中两位女眷旁观。稳婆神色微变。",
+      "speakers": [
+        {
+          "speaker": "昭宁",
+          "text": "验可以。证人、器物、次序——我定。"
+        },
+        {
+          "speaker": "青禾",
+          "text": "小姐……她们会不会翻脸？"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "翻。正好入账。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_trap",
+          "text": "调换稳婆随身瓷瓶（反将）",
+          "effects": {
+            "setFlags": [
+              "swapped_vial"
+            ],
+            "addLedger": [
+              {
+                "id": "ledger_vial",
+                "kind": "物",
+                "title": "稳婆瓷瓶",
+                "detail": "原拟用于栽赃的药汁。已调换，可反证。"
+              }
+            ],
+            "goto": "ch2_trap_spring"
+          }
+        },
+        {
+          "id": "c_honest",
+          "text": "只盯着流程，不做手脚",
+          "effects": {
+            "setFlags": [
+              "clean_check"
+            ],
+            "goto": "ch2_clean"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch2_trap_spring",
+      "narration": "验身开始。稳婆伸手取瓶，色变——瓶中清澈，非她所备。昭宁淡声开口。",
+      "speakers": [
+        {
+          "speaker": "昭宁",
+          "text": "婆子，你带进来的，与现在倒出的，不是一味。谁想脏我？"
+        },
+        {
+          "speaker": "婆母",
+          "text": "……荒唐！！把她带走！"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_confirm_vial",
+          "text": "当众封存瓷瓶为证",
+          "effects": {
+            "confirmLedger": [
+              "ledger_vial"
+            ],
+            "deltaPublicity": 15,
+            "setFlags": [
+              "check_reversed"
+            ],
+            "goto": "ch2_end"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch2_clean",
+      "narration": "流程走完，无瑕可挑。婆母只好散场。昭宁却知：下一刀会更快。",
+      "speakers": [
+        {
+          "speaker": "昭宁",
+          "text": "干净，不代表安全。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_clean_end",
+          "text": "记下今日每一位在场者",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_witnesses",
+                "kind": "人",
+                "title": "验身在场名单",
+                "detail": "婆母、稳婆、两名女眷、青禾。可作日后对质。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_witnesses"
+            ],
+            "setFlags": [
+              "check_clean"
+            ],
+            "goto": "ch2_end"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch2_public_expose",
+      "narration": "你甩出麝香小包残线，厅中哗然。继母想夺，被你踩住。公开度飙升——沈府脸面今日尽毁。",
+      "speakers": [
+        {
+          "speaker": "昭宁",
+          "text": "想验我？先验这衣里缝的是什么。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_ending_exposed",
+          "text": "就此离府，另寻活路（结局：当众撕破）",
+          "effects": {
+            "confirmLedger": [
+              "ledger_musk"
+            ],
+            "ending": "ending_exposed"
+          }
+        },
+        {
+          "id": "c_exposed_to_v1",
+          "text": "离府后仍要算账（跳至卷一·起）",
+          "effects": {
+            "confirmLedger": [
+              "ledger_musk"
+            ],
+            "setFlags": [
+              "check_reversed",
+              "public_broke",
+              "prologue_cleared"
+            ],
+            "deltaPublicity": 10,
+            "checkpoint": true,
+            "goto": "v1_bridge"
+          }
+        },
+        {
+          "id": "c_continue_after_expose",
+          "text": "毁誉在所不惜，继续查下去",
+          "effects": {
+            "confirmLedger": [
+              "ledger_musk"
+            ],
+            "setFlags": [
+              "check_reversed",
+              "public_broke"
+            ],
+            "deltaPublicity": 10,
+            "goto": "ch2_end"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch2_end",
+      "narration": "夜风入窗。青禾端来安神汤，手仍抖。昭宁没喝，只问一句。",
+      "speakers": [
+        {
+          "speaker": "昭宁",
+          "text": "明日若有青袍人来——报我。"
+        },
+        {
+          "speaker": "青禾",
+          "text": "……是。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_ch3",
+          "text": "进入第3章 · 裴玄登场",
+          "effects": {
+            "checkpoint": true,
+            "goto": "ch3_arrive"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch3_arrive",
+      "title": "第3章 · 裴玄登场",
+      "narration": "次日午后。门外通报：大理寺行走裴玄，奉命路过，借府一盏茶。\n青袍，腰间玉佩阴刻「玄」字。他进门，目光只落你一瞬。",
+      "onEnter": {
+        "checkpoint": true
+      },
+      "speakers": [
+        {
+          "speaker": "裴玄",
+          "text": "沈二姑娘。昨夜厅里的喧哗，半条街都听见了。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "听清楚了？"
+        },
+        {
+          "speaker": "裴玄",
+          "text": "只听清一句：有人想脏你。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_ask_case",
+          "text": "试探：可否立案",
+          "effects": {
+            "setFlags": [
+              "asked_case"
+            ],
+            "goto": "ch3_case_talk"
+          }
+        },
+        {
+          "id": "c_cold_tea",
+          "text": "只请茶，不提案",
+          "effects": {
+            "deltaBonds": {
+              "peixuan": 1
+            },
+            "goto": "ch3_tea_only"
+          }
+        },
+        {
+          "id": "c_accuse_rash",
+          "text": "当众咬定继母害人（冒险）",
+          "effects": {
+            "deltaPublicity": 20,
+            "goto": "ch3_rash"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch3_case_talk",
+      "narration": "裴玄放下杯。指节白净，无多余动作。",
+      "speakers": [
+        {
+          "speaker": "裴玄",
+          "text": "立案，要物证，要人证，要你愿意把命押上去。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "命，我还有几条。"
+        },
+        {
+          "speaker": "裴玄",
+          "text": "……几条？"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_show_proof",
+          "text": "出示已确认的账本证物",
+          "require": {
+            "ledger": [
+              "ledger_musk"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "需持有「麝香小包」账本条目",
+          "effects": {
+            "deltaBonds": {
+              "peixuan": 3
+            },
+            "setFlags": [
+              "showed_proof"
+            ],
+            "goto": "ch3_file"
+          }
+        },
+        {
+          "id": "c_show_vial",
+          "text": "出示稳婆瓷瓶",
+          "require": {
+            "ledger": [
+              "ledger_vial"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "需完成反将验身并取得瓷瓶",
+          "effects": {
+            "deltaBonds": {
+              "peixuan": 3
+            },
+            "setFlags": [
+              "showed_proof"
+            ],
+            "goto": "ch3_file"
+          }
+        },
+        {
+          "id": "c_no_proof_yet",
+          "text": "「证据稍后奉上。」",
+          "effects": {
+            "deltaBonds": {
+              "peixuan": 1
+            },
+            "goto": "ch3_wait"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch3_tea_only",
+      "narration": "茶过三巡。裴玄起身，临走丢下一句。",
+      "speakers": [
+        {
+          "speaker": "裴玄",
+          "text": "城南废园。角门。你若去，带点能开门的东西。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_tea_to_ch4",
+          "text": "记下废园，转入第4章",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_garden_hint",
+                "kind": "事",
+                "title": "城南废园线索",
+                "detail": "裴玄暗示：角门需「能开门的东西」。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_garden_hint"
+            ],
+            "setFlags": [
+              "garden_hint"
+            ],
+            "checkpoint": true,
+            "goto": "ch4_road"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch3_rash",
+      "narration": "话音落，继母哭喊「血口」。府兵上前拦你。裴玄未动，只看你一眼。",
+      "speakers": [
+        {
+          "speaker": "裴玄",
+          "text": "没有状纸的指控，是噪。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_rash_recover",
+          "text": "收声，改呈证物",
+          "require": {
+            "flags": [
+              "found_musk"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "需已发现夹层之物",
+          "effects": {
+            "deltaBonds": {
+              "peixuan": 1
+            },
+            "goto": "ch3_case_talk"
+          }
+        },
+        {
+          "id": "c_rash_death",
+          "text": "硬闯书房夺旧账（危险）",
+          "effects": {
+            "death": true,
+            "goto": "ch3_arrive"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch3_file",
+      "narration": "裴玄收证物入袖。玉佩轻撞杯沿，一声。",
+      "speakers": [
+        {
+          "speaker": "裴玄",
+          "text": "大理寺可接。你可愿署真名？"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "署。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_ending_case",
+          "text": "正式立案，暂收锋芒（结局：立案之路）",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_case",
+                "kind": "数",
+                "title": "大理寺立案号",
+                "detail": "裴玄经手。沈府旧案入册。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_case"
+            ],
+            "ending": "ending_case"
+          }
+        },
+        {
+          "id": "c_case_to_v1",
+          "text": "立案之后，继续追查缺页（进入卷一）",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_case",
+                "kind": "数",
+                "title": "大理寺立案号",
+                "detail": "裴玄经手。沈府旧案入册。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_case"
+            ],
+            "setFlags": [
+              "case_filed",
+              "garden_hint",
+              "prologue_cleared"
+            ],
+            "checkpoint": true,
+            "goto": "v1_bridge"
+          }
+        },
+        {
+          "id": "c_case_then_garden",
+          "text": "立案，但今夜仍去废园",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_case",
+                "kind": "数",
+                "title": "大理寺立案号",
+                "detail": "裴玄经手。沈府旧案入册。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_case"
+            ],
+            "setFlags": [
+              "case_filed",
+              "garden_hint"
+            ],
+            "checkpoint": true,
+            "goto": "ch4_road"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch3_wait",
+      "narration": "裴玄点头，不多留。出门前，他停半步。",
+      "speakers": [
+        {
+          "speaker": "裴玄",
+          "text": "城南。角门。吴婆子认物不认人。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_wait_garden",
+          "text": "转入第4章 · 城南废园",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_garden_hint",
+                "kind": "事",
+                "title": "城南废园线索",
+                "detail": "角门吴婆子，认物不认人。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_garden_hint"
+            ],
+            "setFlags": [
+              "garden_hint"
+            ],
+            "checkpoint": true,
+            "goto": "ch4_road"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch4_road",
+      "title": "第4章 · 城南废园",
+      "narration": "月上柳梢。你换布衣，青禾跟在身后，牙关紧。废园角门挂着半截锈锁，门内一星灯火。",
+      "onEnter": {
+        "checkpoint": true
+      },
+      "speakers": [
+        {
+          "speaker": "青禾",
+          "text": "小姐，真要进？听说里面……埋过人。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "埋的不是我，就进。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_knock",
+          "text": "叩角门",
+          "effects": {
+            "goto": "ch4_wupo"
+          }
+        },
+        {
+          "id": "c_climb",
+          "text": "翻墙潜入（险）",
+          "effects": {
+            "goto": "ch4_climb"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch4_wupo",
+      "narration": "门缝拉开一线。一张皱脸，眼尖如锥。",
+      "speakers": [
+        {
+          "speaker": "吴婆子",
+          "text": "谁？没帖的，滚。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "认物。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_show_musk_key",
+          "text": "出示麝香小包相关证物",
+          "require": {
+            "ledger": [
+              "ledger_musk"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "需账本中有麝香小包",
+          "effects": {
+            "deltaBonds": {
+              "wupo": 2
+            },
+            "setFlags": [
+              "door_open"
+            ],
+            "goto": "ch4_inside"
+          }
+        },
+        {
+          "id": "c_show_case_key",
+          "text": "出示立案号抄件",
+          "require": {
+            "ledger": [
+              "ledger_case"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "需已立案",
+          "effects": {
+            "deltaBonds": {
+              "wupo": 1
+            },
+            "setFlags": [
+              "door_open"
+            ],
+            "goto": "ch4_inside"
+          }
+        },
+        {
+          "id": "c_bribe",
+          "text": "塞银子硬开",
+          "effects": {
+            "deltaPublicity": 5,
+            "goto": "ch4_bribe"
+          }
+        },
+        {
+          "id": "c_threat",
+          "text": "揭她旧把柄（需人情）",
+          "require": {
+            "bonds": {
+              "peixuan": 2
+            }
+          },
+          "showLocked": true,
+          "lockedHint": "需裴玄好感≥2（曾出示证物）",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_wupo_secret",
+                "kind": "人",
+                "title": "吴婆子把柄",
+                "detail": "裴玄暗示过的旧事。她不敢不开门。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_wupo_secret"
+            ],
+            "setFlags": [
+              "door_open"
+            ],
+            "goto": "ch4_inside"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch4_bribe",
+      "narration": "银子递过门缝。吴婆子笑了一声，门却更紧。",
+      "speakers": [
+        {
+          "speaker": "吴婆子",
+          "text": "银子能买命？你的命，我看不值。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_bribe_back",
+          "text": "退回，另想办法",
+          "effects": {
+            "goto": "ch4_wupo"
+          }
+        },
+        {
+          "id": "c_bribe_force",
+          "text": "踹门硬闯",
+          "effects": {
+            "death": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch4_climb",
+      "narration": "墙头苔滑。你翻到一半，脚下空——",
+      "speakers": [
+        {
+          "speaker": "青禾",
+          "text": "小姐！"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_climb_death",
+          "text": "……（坠落）",
+          "effects": {
+            "death": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch4_inside",
+      "narration": "角门开了。废园荒井旁，一处石阶通向下方。空气冷而干。昭宁停步，听自己的呼吸。",
+      "speakers": [
+        {
+          "speaker": "吴婆子",
+          "text": "下去吧。带得走的，自己拿；带不走的——别怪门在你身后关上。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "还剩几次，我自己数。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_ending_garden",
+          "text": "走入地下，取得关键账册（结局：废园密钥）",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_secret_book",
+                "kind": "物",
+                "title": "废园密册",
+                "detail": "记录沈府多年银货往来与几桩「意外」。铁证。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_secret_book"
+            ],
+            "ending": "ending_garden"
+          }
+        },
+        {
+          "id": "c_garden_to_v1",
+          "text": "密册到手，追查缺页（进入卷一）",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_secret_book",
+                "kind": "物",
+                "title": "废园密册",
+                "detail": "记录沈府多年银货往来与几桩「意外」。铁证。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_secret_book"
+            ],
+            "setFlags": [
+              "got_secret_book",
+              "prologue_cleared"
+            ],
+            "checkpoint": true,
+            "goto": "v1_bridge"
+          }
+        },
+        {
+          "id": "c_garden_more",
+          "text": "先搜外围，再决定是否深入",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_well",
+                "kind": "事",
+                "title": "荒井异常",
+                "detail": "井壁有新凿痕，似有人近期动过。"
+              }
+            ],
+            "goto": "ch4_well"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch4_well",
+      "narration": "青禾提灯。井口风声如泣。你俯身——忽然背后有推拒之力。",
+      "speakers": [
+        {
+          "speaker": "？？？",
+          "text": "沈昭宁，不该回来。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_well_fight",
+          "text": "反手抓住来人",
+          "require": {
+            "flags": [
+              "scar_made"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "腕上有疤者反应更快（第1章选择）",
+          "effects": {
+            "setFlags": [
+              "caught_assailant"
+            ],
+            "goto": "ch4_catch"
+          }
+        },
+        {
+          "id": "c_well_fall",
+          "text": "来不及——坠入井中",
+          "effects": {
+            "death": true
+          }
+        },
+        {
+          "id": "c_well_run",
+          "text": "扯青禾撤向角门",
+          "effects": {
+            "deltaBonds": {
+              "qinghe": 3
+            },
+            "goto": "ch4_retreat"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch4_catch",
+      "narration": "来人面罩滑落——竟是府中跑腿的打杂。他怀中掉出一纸，字迹是继母的。",
+      "speakers": [
+        {
+          "speaker": "昭宁",
+          "text": "回去告诉她：井填不满，账也烧不完。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_catch_end",
+          "text": "押人取证，离开废园（结局：废园密钥）",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_secret_book",
+                "kind": "物",
+                "title": "废园密册",
+                "detail": "记录沈府多年银货往来与几桩「意外」。铁证。"
+              },
+              {
+                "id": "ledger_jimo_note",
+                "kind": "事",
+                "title": "继母手令",
+                "detail": "命人于废园「了事」。已扣押。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_secret_book",
+              "ledger_jimo_note"
+            ],
+            "ending": "ending_garden"
+          }
+        },
+        {
+          "id": "c_catch_to_v1",
+          "text": "押人取证后，继续卷一",
+          "effects": {
+            "addLedger": [
+              {
+                "id": "ledger_secret_book",
+                "kind": "物",
+                "title": "废园密册",
+                "detail": "记录沈府多年银货往来与几桩「意外」。铁证。"
+              },
+              {
+                "id": "ledger_jimo_note",
+                "kind": "事",
+                "title": "继母手令",
+                "detail": "命人于废园「了事」。已扣押。"
+              }
+            ],
+            "confirmLedger": [
+              "ledger_secret_book",
+              "ledger_jimo_note"
+            ],
+            "setFlags": [
+              "got_secret_book",
+              "caught_assailant",
+              "prologue_cleared"
+            ],
+            "checkpoint": true,
+            "goto": "v1_bridge"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ch4_retreat",
+      "narration": "你们退出角门。吴婆子似笑非笑，把门重新闩上。",
+      "speakers": [
+        {
+          "speaker": "吴婆子",
+          "text": "下次来，带更多能开门的东西。"
+        },
+        {
+          "speaker": "昭宁",
+          "text": "会的。"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c_retreat_case",
+          "text": "连夜找裴玄补证据（结局：立案之路）",
+          "require": {
+            "flags": [
+              "showed_proof"
+            ]
+          },
+          "showLocked": true,
+          "lockedHint": "需曾向裴玄出示过证物",
+          "effects": {
+            "ending": "ending_case"
+          }
+        },
+        {
+          "id": "c_retreat_to_v1",
+          "text": "带着线索进入卷一",
+          "effects": {
+            "setFlags": [
+              "prologue_cleared"
+            ],
+            "checkpoint": true,
+            "goto": "v1_bridge"
+          }
+        },
+        {
+          "id": "c_retreat_retry",
+          "text": "天亮前再探一次（回到角门）",
+          "effects": {
+            "goto": "ch4_wupo"
+          }
+        }
+      ]
+    }
+  ]
+}
