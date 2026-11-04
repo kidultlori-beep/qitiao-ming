@@ -77,3 +77,9 @@ npm install && npm run dev
 - 投诉与发布仅 localStorage / mailto 占位
 - 无自动化 E2E
 - 法务文本为简版非正式律师稿
+
+## 公网
+
+- 站点：https://qitiao-ming.onrender.com
+- 仓库：https://github.com/kidultlori-beep/qitiao-ming
+- Render：https://dashboard.render.com/static/srv-dblm150n74is73c3nm4g
