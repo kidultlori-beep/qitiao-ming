@@ -1,18 +1,19 @@
 :root {
-  --bg: #16120e;
-  --bg-panel: #1f1913;
-  --bg-soft: #2a221a;
-  --ink: #e8dcc8;
-  --ink-dim: #a89880;
-  --accent: #c4a574;
-  --accent-hot: #b54a3c;
-  --line: #3d3428;
-  --ok: #6b8f71;
-  --warn: #c4a574;
-  --danger: #b54a3c;
+  /* B · 青瓷冷骨 */
+  --bg: #0f1412;
+  --bg-panel: #17201c;
+  --bg-soft: #1e2a24;
+  --ink: #d7e6de;
+  --ink-dim: #8aa396;
+  --accent: #7fbfa8;
+  --accent-hot: #c9a27a;
+  --line: #2a3a34;
+  --ok: #6aab90;
+  --warn: #c9a27a;
+  --danger: #c97b6e;
   --radius: 10px;
   --font: "Noto Serif SC", "Songti SC", "SimSun", "STSong", serif;
-  --ui: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --ui: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -86,9 +87,9 @@ button {
   transition: background 0.15s, border-color 0.15s;
 }
 
-.btn:hover { border-color: var(--accent); background: #332a20; }
+.btn:hover { border-color: var(--accent); background: #24352e; }
 .btn.primary {
-  background: linear-gradient(180deg, #3a2f22, #2a221a);
+  background: linear-gradient(180deg, #24352e, #1a2822);
   border-color: var(--accent);
   color: var(--accent);
 }
@@ -131,11 +132,11 @@ button {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--accent-hot);
-  box-shadow: 0 0 0 1px #5a241c;
+  background: var(--danger);
+  box-shadow: 0 0 0 1px #5a3834;
 }
 .life-pip.off {
-  background: #3a2a28;
+  background: #2a3430;
   box-shadow: none;
 }
 
@@ -275,7 +276,7 @@ button {
 .choice-btn {
   text-align: left;
   border: 1px solid var(--line);
-  background: #241c15;
+  background: #15201b;
   color: var(--ink);
   padding: 12px 14px;
   border-radius: var(--radius);
@@ -296,9 +297,9 @@ button {
 }
 
 .death-banner {
-  background: #3a1814;
+  background: #2a1c1a;
   border: 1px solid var(--danger);
-  color: #f0cfc8;
+  color: #f0d8d2;
   padding: 12px 14px;
   border-radius: var(--radius);
   text-align: center;
@@ -532,7 +533,7 @@ button {
   resize: vertical;
 }
 .success-box {
-  background: #1c2a1e;
+  background: #15241c;
   border: 1px solid var(--ok);
   border-radius: var(--radius);
   padding: 14px;

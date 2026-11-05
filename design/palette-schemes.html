@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>七条命 · 配色与字体方案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;600;700&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 32px 28px 48px;
+    background: #0e0c0a;
+    color: #e8dcc8;
+    font-family: "Noto Sans SC", system-ui, sans-serif;
+  }
+  h1 {
+    font-family: "Noto Serif SC", serif;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    font-size: 1.6rem;
+    margin: 0 0 8px;
+    color: #c4a574;
+  }
+  .lead { color: #a89880; margin: 0 0 28px; font-size: 0.95rem; line-height: 1.6; }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .card {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+  }
+  .swatches { display: flex; height: 56px; }
+  .swatches span { flex: 1; }
+  .body { padding: 18px 18px 20px; }
+  .tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    padding: 3px 8px;
+    border-radius: 999px;
+    border: 1px solid currentColor;
+    opacity: 0.85;
+    margin-bottom: 10px;
+  }
+  .title {
+    font-size: 1.35rem;
+    margin: 0 0 6px;
+    letter-spacing: 0.12em;
+  }
+  .blurb { margin: 0 0 14px; font-size: 0.88rem; line-height: 1.65; opacity: 0.85; }
+  .meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 14px;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    opacity: 0.9;
+  }
+  .meta strong { display: block; opacity: 0.65; font-weight: 500; margin-bottom: 2px; }
+  .sample {
+    margin-top: 14px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .sample .headline { font-size: 1.15rem; letter-spacing: 0.2em; margin: 0 0 6px; }
+  .sample .ui { font-size: 0.85rem; opacity: 0.8; margin: 0; }
+  .btn-row { display: flex; gap: 8px; margin-top: 10px; }
+  .chip {
+    flex: 1;
+    text-align: center;
+    padding: 8px 6px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    border: 1px solid transparent;
+  }
+</style>
+</head>
+<body>
+  <h1>七条命</h1>
+  <p class="lead">配色 × 字体方案对比 · 选一套后我再细画落地页 / 游戏 HUD / 工坊</p>
+  <div class="grid">
+
+    <article class="card" style="background:#16120e;color:#e8dcc8;">
+      <div class="swatches">
+        <span style="background:#16120e"></span>
+        <span style="background:#1f1913"></span>
+        <span style="background:#c4a574"></span>
+        <span style="background:#b54a3c"></span>
+        <span style="background:#e8dcc8"></span>
+      </div>
+      <div class="body">
+        <span class="tag" style="color:#c4a574;">A · 现版微调</span>
+        <h2 class="title" style="font-family:'Noto Serif SC',serif;color:#c4a574;">墨金·夜账</h2>
+        <p class="blurb">暖墨底 + 旧金强调 + 朱砂危险色。权谋、账本、暗夜书房感最强，和现版一脉。</p>
+        <div class="meta">
+          <div><strong>背景 / 面板</strong>#16120e · #1f1913</div>
+          <div><strong>主色 / 强调</strong>#c4a574 · #b54a3c</div>
+          <div><strong>标题字体</strong>Noto Serif SC（思源宋）</div>
+          <div><strong>正文字体</strong>Noto Sans SC / 苹方</div>
+        </div>
+        <div class="sample" style="background:#1f1913;">
+          <p class="headline" style="font-family:'Noto Serif SC',serif;color:#c4a574;">七条命</p>
+          <p class="ui" style="font-family:'Noto Sans SC',sans-serif;">账本已确认 · 公开度 12 · 命数 7</p>
+          <div class="btn-row">
+            <span class="chip" style="background:#c4a574;color:#16120e;font-family:'Noto Sans SC',sans-serif;">开始游戏</span>
+            <span class="chip" style="border-color:#3d3428;color:#e8dcc8;font-family:'Noto Sans SC',sans-serif;">创作工坊</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" style="background:#0f1412;color:#d7e6de;">
+      <div class="swatches">
+        <span style="background:#0f1412"></span>
+        <span style="background:#17201c"></span>
+        <span style="background:#7fbfa8"></span>
+        <span style="background:#c9a27a"></span>
+        <span style="background:#e8f2ec"></span>
+      </div>
+      <div class="body">
+        <span class="tag" style="color:#7fbfa8;">B · 冷骨</span>
+        <h2 class="title" style="font-family:'Noto Serif SC',serif;color:#7fbfa8;">青瓷冷骨</h2>
+        <p class="blurb">青灰夜色 + 青瓷点缀 + 骨白字。更「清冷女主 / 证据流」，少一点江湖烟火，多一点克制。</p>
+        <div class="meta">
+          <div><strong>背景 / 面板</strong>#0f1412 · #17201c</div>
+          <div><strong>主色 / 暖辅</strong>#7fbfa8 · #c9a27a</div>
+          <div><strong>标题字体</strong>Noto Serif SC</div>
+          <div><strong>正文字体</strong>Noto Sans SC</div>
+        </div>
+        <div class="sample" style="background:#17201c;">
+          <p class="headline" style="font-family:'Noto Serif SC',serif;color:#7fbfa8;">七条命</p>
+          <p class="ui" style="font-family:'Noto Sans SC',sans-serif;">人情未动 · 缺页已收 · 命数 6</p>
+          <div class="btn-row">
+            <span class="chip" style="background:#7fbfa8;color:#0f1412;font-family:'Noto Sans SC',sans-serif;">开始游戏</span>
+            <span class="chip" style="border-color:#2a3a34;color:#d7e6de;font-family:'Noto Sans SC',sans-serif;">创作工坊</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" style="background:#1a0f10;color:#f3e6d8;">
+      <div class="swatches">
+        <span style="background:#1a0f10"></span>
+        <span style="background:#271618"></span>
+        <span style="background:#c45c48"></span>
+        <span style="background:#e2b87a"></span>
+        <span style="background:#f3e6d8"></span>
+      </div>
+      <div class="body">
+        <span class="tag" style="color:#c45c48;">C · 热血账</span>
+        <h2 class="title" style="font-family:'ZCOOL XiaoWei',serif;color:#e2b87a;">朱砂账簿</h2>
+        <p class="blurb">酒渍红底 + 朱砂主按钮 + 金箔字。戏剧冲突更强，适合「自刎 / 回流 / 讨债」情绪峰值。</p>
+        <div class="meta">
+          <div><strong>背景 / 面板</strong>#1a0f10 · #271618</div>
+          <div><strong>主色 / 金辅</strong>#c45c48 · #e2b87a</div>
+          <div><strong>标题字体</strong>ZCOOL XiaoWei（站酷小薇）</div>
+          <div><strong>正文字体</strong>Noto Sans SC</div>
+        </div>
+        <div class="sample" style="background:#271618;">
+          <p class="headline" style="font-family:'ZCOOL XiaoWei',serif;color:#e2b87a;">七条命</p>
+          <p class="ui" style="font-family:'Noto Sans SC',sans-serif;">曾回流 2 次 · 危险选项已亮</p>
+          <div class="btn-row">
+            <span class="chip" style="background:#c45c48;color:#f3e6d8;font-family:'Noto Sans SC',sans-serif;">开始游戏</span>
+            <span class="chip" style="border-color:#4a3032;color:#f3e6d8;font-family:'Noto Sans SC',sans-serif;">创作工坊</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" style="background:#12151c;color:#dbe2f0;">
+      <div class="swatches">
+        <span style="background:#12151c"></span>
+        <span style="background:#1a2030"></span>
+        <span style="background:#8fa4d8"></span>
+        <span style="background:#d6c39a"></span>
+        <span style="background:#eef2fa"></span>
+      </div>
+      <div class="body">
+        <span class="tag" style="color:#8fa4d8;">D · 月影</span>
+        <h2 class="title" style="font-family:'LXGW WenKai TC',serif;color:#d6c39a;">月影青灰</h2>
+        <p class="blurb">夜蓝灰 + 月白标题 + 浅金点缀。偏「剑气 / 月下对谈」，和武侠即时感更近，也更现代一点。</p>
+        <div class="meta">
+          <div><strong>背景 / 面板</strong>#12151c · #1a2030</div>
+          <div><strong>主色 / 金辅</strong>#8fa4d8 · #d6c39a</div>
+          <div><strong>标题字体</strong>LXGW WenKai（霞鹜文楷）</div>
+          <div><strong>正文字体</strong>Noto Sans SC</div>
+        </div>
+        <div class="sample" style="background:#1a2030;">
+          <p class="headline" style="font-family:'LXGW WenKai TC',serif;color:#d6c39a;">七条命</p>
+          <p class="ui" style="font-family:'Noto Sans SC',sans-serif;">书房夜谈 · 人情 +3 · 命数 7</p>
+          <div class="btn-row">
+            <span class="chip" style="background:#8fa4d8;color:#12151c;font-family:'Noto Sans SC',sans-serif;">开始游戏</span>
+            <span class="chip" style="border-color:#2c3548;color:#dbe2f0;font-family:'Noto Sans SC',sans-serif;">创作工坊</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" style="background:#f4efe6;color:#2c241c;grid-column:1/-1;">
+      <div class="swatches">
+        <span style="background:#f4efe6"></span>
+        <span style="background:#ebe2d4"></span>
+        <span style="background:#8b3a2f"></span>
+        <span style="background:#3d5c4a"></span>
+        <span style="background:#2c241c"></span>
+      </div>
+      <div class="body">
+        <span class="tag" style="color:#8b3a2f;">E · 纸本</span>
+        <h2 class="title" style="font-family:'Noto Serif SC',serif;color:#8b3a2f;">素笺朱印</h2>
+        <p class="blurb">浅宣纸底 + 朱印标题 + 松烟正文。日间阅读更舒服，像线装本；和「暗夜权谋」反差最大，适合偏文学向落地页。</p>
+        <div class="meta">
+          <div><strong>背景 / 面板</strong>#f4efe6 · #ebe2d4</div>
+          <div><strong>主色 / 绿辅</strong>#8b3a2f · #3d5c4a</div>
+          <div><strong>标题字体</strong>Noto Serif SC</div>
+          <div><strong>正文字体</strong>Noto Serif SC（正文也偏书卷）/ 辅 UI 用 Sans</div>
+        </div>
+        <div class="sample" style="background:#ebe2d4;border-color:#d9cdb8;">
+          <p class="headline" style="font-family:'Noto Serif SC',serif;color:#8b3a2f;">七条命</p>
+          <p class="ui" style="font-family:'Noto Sans SC',sans-serif;color:#5a4d40;">被逼自刎之后，她只剩七条命。</p>
+          <div class="btn-row">
+            <span class="chip" style="background:#8b3a2f;color:#f4efe6;font-family:'Noto Sans SC',sans-serif;">开始游戏</span>
+            <span class="chip" style="border-color:#cbbba3;color:#2c241c;font-family:'Noto Sans SC',sans-serif;">创作工坊</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</body>
+</html>
